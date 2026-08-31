@@ -240,7 +240,7 @@ def validate_evals(layout: Layout, errors: list[str]) -> None:
 def validate_repository(root: Path) -> list[str]:
     layout = Layout.from_root(root)
     errors: list[str] = []
-    for path in (layout.root / "README.md", layout.root / "SKILL.md", layout.root / "agents" / "openai.yaml", layout.root / "LICENSE", layout.root / "CHANGELOG.md", layout.root / "CONTRIBUTING.md", layout.root / "SECURITY.md", layout.plugin / "README.md", layout.plugin / "LICENSE"):
+    for path in (layout.root / "README.md", layout.root / "README.zh-CN.md", layout.root / "README.ja.md", layout.root / "SKILL.md", layout.root / "agents" / "openai.yaml", layout.root / "LICENSE", layout.root / "CHANGELOG.md", layout.root / "CONTRIBUTING.md", layout.root / "SECURITY.md", layout.plugin / "README.md", layout.plugin / "LICENSE"):
         require_file(path, errors)
     frontmatter = validate_skill(layout, errors)
     version = validate_plugin(layout, frontmatter, errors)
@@ -278,6 +278,21 @@ def validate_repository(root: Path) -> list[str]:
             if fragment not in readme:
                 errors.append(f"README.md missing required installation fragment: {fragment}")
         validate_relative_links(readme_path, readme, errors)
+    localized_readmes = {
+        layout.root / "README.md": "**English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)",
+        layout.root / "README.zh-CN.md": "[English](README.md) | **简体中文** | [日本語](README.ja.md)",
+        layout.root / "README.ja.md": "[English](README.md) | [简体中文](README.zh-CN.md) | **日本語**",
+    }
+    for localized_path, expected_navigation in localized_readmes.items():
+        if not localized_path.is_file():
+            continue
+        localized_text = localized_path.read_text(encoding="utf-8")
+        if not localized_text.startswith(expected_navigation + "\n"):
+            errors.append(f"{localized_path.name} must start with the standard language navigation")
+        for fragment in ("codex plugin marketplace add EldenPdx/subagents-workflow", "plugins/subagents-workflow/skills/subagents-workflow"):
+            if fragment not in localized_text:
+                errors.append(f"{localized_path.name} missing required installation fragment: {fragment}")
+        validate_relative_links(localized_path, localized_text, errors)
     for path in layout.root.rglob("*"):
         if ".git" in path.parts:
             continue

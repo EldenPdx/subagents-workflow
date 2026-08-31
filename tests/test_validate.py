@@ -56,6 +56,13 @@ class ValidateRepositoryTests(unittest.TestCase):
         errors = repo_validate.validate_repository(target)
         self.assertTrue(any("broken relative link" in error for error in errors), errors)
 
+    def test_detects_missing_localized_readme(self) -> None:
+        temp, target = self.copy_repo()
+        self.addCleanup(temp.cleanup)
+        (target / "README.ja.md").unlink()
+        errors = repo_validate.validate_repository(target)
+        self.assertTrue(any("README.ja.md" in error for error in errors), errors)
+
 
 if __name__ == "__main__":
     unittest.main()

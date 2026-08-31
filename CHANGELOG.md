@@ -5,6 +5,10 @@ based on Keep a Changelog, and the project follows Semantic Versioning.
 
 ## [Unreleased]
 
+### Added
+
+- English-first repository homepage with complete Simplified Chinese and Japanese README translations.
+
 ## [1.0.0] - 2026-08-31
 
 ### Added
