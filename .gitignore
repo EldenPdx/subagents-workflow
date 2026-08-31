@@ -1,0 +1,9 @@
+.DS_Store
+.serena/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+*.zip

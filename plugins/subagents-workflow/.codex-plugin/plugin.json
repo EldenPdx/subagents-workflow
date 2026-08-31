@@ -1,0 +1,41 @@
+{
+  "name": "subagents-workflow",
+  "version": "1.0.0",
+  "description": "A skill-only plugin for planning, delegating, coordinating, recovering, and validating native subagent workflows.",
+  "author": {
+    "name": "EldenPdx",
+    "url": "https://github.com/EldenPdx"
+  },
+  "homepage": "https://github.com/EldenPdx/subagents-workflow",
+  "repository": "https://github.com/EldenPdx/subagents-workflow",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "subagents",
+    "multi-agent",
+    "delegation",
+    "parallel-work",
+    "orchestration",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Subagents Workflow",
+    "shortDescription": "Plan and validate native subagent work",
+    "longDescription": "Use native subagent primitives with bounded task contracts, non-overlapping ownership, event-driven coordination, recovery, integration review, and explicit completion criteria.",
+    "developerName": "EldenPdx",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/EldenPdx/subagents-workflow",
+    "brandColor": "#0F766E",
+    "defaultPrompt": [
+      "Use subagents to implement this task with clear ownership and final validation.",
+      "Split this investigation across parallel agents, then integrate the findings.",
+      "Review this change with independent implementation and verification agents."
+    ]
+  }
+}

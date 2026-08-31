@@ -1,0 +1,23 @@
+{
+  "name": "eldenpdx",
+  "interface": {
+    "displayName": "EldenPdx Skills"
+  },
+  "plugins": [
+    {
+      "name": "subagents-workflow",
+      "source": {
+        "source": "local",
+        "path": "./plugins/subagents-workflow"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Subagents Workflow"
+      }
+    }
+  ]
+}

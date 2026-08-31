@@ -1,0 +1,30 @@
+{
+  "skill_name": "subagents-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use $subagents-workflow to fix the typo in README.md. It is a one-line change.",
+      "expected_output": "The parent Agent selects direct mode, makes the one-line change without spawning a subagent, validates the file, and explains that delegation would not add value."
+    },
+    {
+      "id": 2,
+      "prompt": "Use three agents to update the API client, write independent integration tests, and review the migration notes. The client and tests are in separate directories.",
+      "expected_output": "The parent identifies a parallel or phased topology, keeps shared interfaces on the critical path, gives three bounded roles with non-overlapping write scopes, continues local integration work, and reports integrated validation."
+    },
+    {
+      "id": 3,
+      "prompt": "Please parallelize a database migration, model changes, and generated client update. All three depend on the same schema file.",
+      "expected_output": "The parent chooses phased execution, assigns the schema to one owner first, waits only when downstream work is genuinely blocked, then fans out model and generated-client work without concurrent schema edits."
+    },
+    {
+      "id": 4,
+      "prompt": "Delegate two independent investigations into an intermittent timeout, then synthesize the evidence. Do not modify code.",
+      "expected_output": "Two read-only investigation agents receive distinct evidence sources and explicit no-write boundaries; the parent synthesizes facts versus inference and does not treat agent summaries as proof without checking evidence."
+    },
+    {
+      "id": 5,
+      "prompt": "Use multi-agent mode, but this host has no subagent tools and I did not authorize an external orchestrator.",
+      "expected_output": "The workflow degrades to direct execution, states that true parallel delegation is unavailable, preserves planning and validation discipline, and does not launch shell workers, new tasks, or install an external orchestrator."
+    }
+  ]
+}
