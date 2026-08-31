@@ -1,0 +1,7 @@
+interface:
+  display_name: "Subagents Workflow"
+  short_description: "原生 Codex Subagents 的任务拆分、并行协作与验收工作流"
+  default_prompt: "Use $subagents-workflow to complete this task with Codex-native subagents: keep the critical path in the parent, delegate bounded parallel work, validate and integrate the results."
+
+policy:
+  allow_implicit_invocation: true
